@@ -12,8 +12,8 @@ class Catcher:
         """
         Constructor for the catcher class
         
-        :return: DESCRIPTION
-        :rtype: TYPE
+        :return: 
+        :rtype: NoneType
 
         """
         
@@ -37,6 +37,7 @@ class Catcher:
         row = 0
         column = 0
         
+        # Read all lines from file and find possible bug locations
         lines = []
         with open(file_location, "r") as f:
             for line in f:
@@ -49,11 +50,13 @@ class Catcher:
 
                 lines.append(line.strip("\n"))
         
+        # Check if it is a full bug on all possible bug locations
         is_bug = True
-        for location in possible_bug_locations:
+        for location in possible_bug_locations:  # iterate possible locations
             row, column = location
             if row < len(lines) - 2:  # To avoid "Index out of range"
                 for line, length in enumerate(bug.bug_size()):
+                    # Starting from possible bug location check if there's a bug
                     if lines[row + line][column:column + length] != bug.bug[line]:
                         is_bug = False
             else:

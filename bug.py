@@ -8,27 +8,27 @@ Created on Sun Aug 22 11:20:53 2021
 class Bug:
     def __init__(self, location):
         """
+        Constructr for a bug class. Read in a bug from a given file location.
         
-        :param file: DESCRIPTION
-        :type file: TYPE
-        :return: DESCRIPTION
-        :rtype: TYPE
+        :param location: DESCRIPTION
+        :type location: TYPE
+        :return: 
+        :rtype: NoneType
 
         """
 
         self.bug_file_location = location
-        self.bug = self.read_bug(self.bug_file_location)
+        self.bug = self.read_bug()
         
+        return
         
-    def read_bug(self, file):
+    def read_bug(self):
         """
         The method assumes that the bug is located in a first line and first 
-        column of the file that is passed for reading
+        column of the file passed to the constructor
         
-        :param file: DESCRIPTION
-        :type file: TYPE
-        :return: DESCRIPTION
-        :rtype: TYPE
+        :return: Array of strings containing each line where bug is spanning
+        :rtype: array[str]
 
         """
         bug_strings = []
@@ -40,9 +40,11 @@ class Bug:
 
     def bug_start(self):
         """
+        Find and return the character which starts the bug string to be able to
+        find possible bug locations in a file by looking for this char.
         
-        :return: DESCRIPTION
-        :rtype: TYPE
+        :return: First character of the full bug string
+        :rtype: str
 
         """
         if len(self.bug) > 0:
@@ -52,9 +54,14 @@ class Bug:
 
     def bug_size(self):
         """
+        A method that finds and returns the size of each line across which the
+        bug is spanning.
         
-        :return: DESCRIPTION
-        :rtype: TYPE
+        :return: Array of integers where each value is a length of a line on 
+                 which the bug is spanning. If a bug is across 4 lines, it 
+                 would return 4 integers with length of the bug in each of 
+                 those lines
+        :rtype: array[int]
 
         """
         
