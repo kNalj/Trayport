@@ -43,7 +43,7 @@ class Catcher:
             for line in f:
                 column = 0
                 for char in line:
-                    if char == "|":
+                    if char == bug.bug_start():
                         possible_bug_locations.append((row, column))
                     column += 1
                 row += 1
