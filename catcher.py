@@ -54,7 +54,7 @@ class Catcher:
         is_bug = True
         for location in possible_bug_locations:  # iterate possible locations
             row, column = location
-            if row < len(lines) - 2:  # To avoid "Index out of range"
+            if row < len(lines) - (len(bug.bug_size()) - 1):  # To avoid "Index out of range"
                 for line, length in enumerate(bug.bug_size()):
                     # Starting from possible bug location check if there's a bug
                     if lines[row + line][column:column + length] != bug.bug[line]:
